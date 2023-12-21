@@ -10,7 +10,6 @@ namespace Entities.Concrete.TableModels
    public class Skill : BaseEntity
     {
         public string Name { get; set; }
-
         public int Deleted { get; set; }
         public List<SkillDetails> SkillDetails { get; set; }
     }
