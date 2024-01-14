@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Person>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+
+    <h1 class="h3 mb-2 text-gray-800 mt-4">Person</h1>
+
+
+    <a href="/admin/Person/Add" class="btn btn-primary">Add</a>
+
+
+@*     <form action="Position/Add" method="get">
+        <button class="btn btn-warning">Add</button>
+    </form> *@
+
+
+    <!-- DataTaBles Example -->
+    <div class="card shadow mb-4 mt-3 ">
+        <div class="card-body ">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Date of Birth</th>
+                            <th>Adress</th>
+                            <th>Email</th>
+                            <th>Website</th>
+                            <th>Img Path</th>
+                            <th>Cv Path</th>
+                            <th>Position</th>
+                            <th>Description</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.FullName</td>
+                                <td>@item.DateofBirth.ToString("dd/MM/yyyy")</td>
+                                <td>@item.Adress</td>
+                                <td>@item.Email</td>
+                                <td>@item.Website</td>
+                                <td> <img src="@("~/Image/"+@item.ImgPath)" asp-append-version="true" width="100px" height="100px" /></td>
+                                <td>
+                                    @* <a href="@Url.Action("Download", "Person", new { cvId = item.ID })">Faylı yüklə</a> *@
+                                    <a href="~/CV/@item.CVPath" download>Download</a>
+
+                                </td>
+                                @* <td>@item.CVPath</td> *@
+                                <td>@item.Position.Name</td>
+                                <td>@item.Description</td>
+
+                                @*  <a asp-action="Edit" asp-route-id="@item.ID">
+                            Edit
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </a> *@
+                                <td>@Html.ActionLink("Edit", "Edit", "Person", new { id = item.ID }, new { @class = "btn btn-success" })</td>
+                                <td>@Html.ActionLink("Delete", "Delete", "Person", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@* <h1 class="h3 mb-2 text-gray-800 mt-4">Person</h1>
+
+
+<a href="/admin/Person/Add" class="btn btn-primary">Add</a>
+
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Persons</h3></div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main> *@

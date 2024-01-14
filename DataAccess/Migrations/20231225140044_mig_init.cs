@@ -59,7 +59,8 @@ namespace DataAccess.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Messages = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,7 +91,8 @@ namespace DataAccess.Migrations
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     IconName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ShownOnPage = table.Column<bool>(type: "bit", nullable: false)
+                    ShownOnPage = table.Column<bool>(type: "bit", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -242,7 +244,8 @@ namespace DataAccess.Migrations
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     EntryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsContinue = table.Column<bool>(type: "bit", nullable: false)
+                    IsContinue = table.Column<bool>(type: "bit", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -270,7 +273,8 @@ namespace DataAccess.Migrations
                     CVPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PositionID = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -290,7 +294,8 @@ namespace DataAccess.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Level = table.Column<int>(type: "int", nullable: false),
-                    SkillID = table.Column<int>(type: "int", nullable: false)
+                    SkillID = table.Column<int>(type: "int", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -310,9 +315,9 @@ namespace DataAccess.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Deleted = table.Column<int>(type: "int", nullable: false),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
-                    WorkCategoryID = table.Column<int>(type: "int", nullable: false)
+                    WorkCategoryID = table.Column<int>(type: "int", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

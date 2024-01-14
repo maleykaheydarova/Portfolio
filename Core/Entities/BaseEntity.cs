@@ -9,5 +9,6 @@ namespace Core.Entities
     public abstract class BaseEntity
     {
         public int ID { get; set; }
+        public int Deleted { get; set; }
     }
 }

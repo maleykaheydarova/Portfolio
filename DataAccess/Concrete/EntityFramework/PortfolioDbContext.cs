@@ -9,9 +9,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete
+namespace DataAccess.Concrete.EntityFramework
 {
-    public class PortfolioDbContext:IdentityDbContext<User,Role,int> 
+    public class PortfolioDbContext : IdentityDbContext<User, Role, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -20,13 +20,13 @@ namespace DataAccess.Concrete
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-           builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(builder);
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Person> Persons { get; set; }  
-        public DbSet<Position> Positions { get; set; }  
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Position> Positions { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Experience> Experiences { get; set; }
         public DbSet<Message> Messages { get; set; }

@@ -11,7 +11,6 @@ namespace Entities.Concrete.TableModels
     {
         public string Name { get; set; }
         public int PersonID { get; set; }
-        public int Deleted { get; set; }
         public List<Person> Persons { get; set; }
     }
 }

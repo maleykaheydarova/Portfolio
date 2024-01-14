@@ -1,6 +1,8 @@
 ﻿using Core.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,8 +12,8 @@ namespace Entities.Concrete.TableModels
 {
     public class Person : BaseEntity
     {
-        public string FirstName;
-        public string LastName;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         [NotMapped]
         public string FullName => FirstName+ "" + LastName;
@@ -22,6 +24,12 @@ namespace Entities.Concrete.TableModels
         public string Description { get; set; }
         public string ImgPath { get; set; }
         public string CVPath { get; set; }
+        [NotMapped]
+        [DisplayName("Upload File")]
+        public IFormFile ImageFile { get; set; }
+        [NotMapped]
+        [DisplayName("Download File")]
+        public IFormFile CvFile { get; set; }
         public Position Position { get; set; }
         
 

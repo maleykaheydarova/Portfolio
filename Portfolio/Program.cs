@@ -1,4 +1,7 @@
-using DataAccess.Concrete;
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Anstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete.TableModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +15,10 @@ builder.Services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<PortfolioDbContext>();
 
 builder.Services.AddDbContext<PortfolioDbContext>();
+builder.Services.AddScoped<IPositionDAL, PositionEFDal>();
+builder.Services.AddScoped<IPositionService, PositionManager>();
+builder.Services.AddScoped<IPersonDAL, PersonEFDal>();
+builder.Services.AddScoped<IPersonService, PersonManager>();
 
 var app = builder.Build();
 
@@ -40,14 +47,13 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+  );
+    endpoints.MapControllerRoute(
           name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
         );
-
-    endpoints.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-    );
 });
 
 
