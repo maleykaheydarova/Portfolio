@@ -37,68 +37,47 @@
                 <div class="section-heading mb-40">
                     <h2>Working Experience</h2>
                 </div>
-                <ul class="exp-list">
-                    <li>
-                        <div class="exp-date">
-                            <i class="ti-bookmark"></i>
-                            <span>January 2014 - Till Now</span>
-                        </div>
-                        <div class="exp-content">
-                            <h4>Envato Inc. <span>Software Engineer</span></h4>
-                            <p>I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="exp-date">
-                            <i class="ti-bookmark"></i>
-                            <span>February 2015 - March 2016</span>
-                        </div>
-                        <div class="exp-content">
-                            <h4>Envato Inc. <span>Web Designer</span></h4>
-                            <p>I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it.</p>
-                        </div>
-                    </li>
-                </ul>
+                @foreach(var item in Model.Experiences)
+                {
+                    <ul class="exp-list">
+                        <li>
+                            <div class="exp-date">
+                                <i class="ti-bookmark"></i>
+                                @{
+                                    string dateRange = item.IsContinue ? $"{item.EntryDate.ToString("dd/mm/yyyy")} - Till now" : $"{item.EntryDate.ToString("dd/mm/yyyy")} - {item.EndDate}";
+                                }
+                                <span>@dateRange</span>
+                            </div>
+                            <div class="exp-content">
+                                <h4>@item.CompanyName <span>@item.Position.Name</span></h4>
+                                <p>@item.Description</p>
+                            </div>
+                        </li>
+                    </ul>
+                }
+               
             </div>
             <div class="col-md-6 sm-padding wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1000ms">
                 <div class="skill-wrap">
                     <div class="section-heading mb-40">
                         <h2>Professional Skills</h2>
                     </div>
-                    <ul class="skill-items">
-                        <li class="skill-item">
-                            <h5>Photoshop</h5>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-delay="0ms" data-wow-duration="2000ms" role="progressbar" style="width: 80%;">
-                                    <span>80%</span>
+                    @foreach(var item in Model.SkillDetails)
+                    {
+                        <ul class="skill-items">
+                            <li class="skill-item">
+                                <h5>@item.Skill.Name</h5>
+                                <div class="progress">
+                                    @{
+                                        int level = item.Level;
+                                    }
+                                    <div class="progress-bar wow slideInLeft" data-wow-delay="0ms" data-wow-duration="2000ms" role="progressbar" style="width: @level%;">
+                                        <span>@level%</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <h5>Indesign</h5>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-delay="200ms" data-wow-duration="2000ms" role="progressbar" style="width: 90%;">
-                                    <span>90%</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <h5>Javascript</h5>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-delay="300ms" data-wow-duration="2000ms" role="progressbar" style="width: 75%;">
-                                    <span>75%</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <h5>Wordpress</h5>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-delay="400ms" data-wow-duration="2000ms" role="progressbar" style="width: 65%;">
-                                    <span>65%</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </div>
@@ -111,30 +90,17 @@
             <h2>Outstanding Services</h2>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                <div class="services-item">
-                    <i class="icon-genius"></i>
-                    <h3>Web Development</h3>
-                    <p>Uniquely incentivize systems for reliable market. Authoritatively scale next generation. </p>
-                    <div class="dots"></div>
+            @foreach(var item in Model.Services)
+            {
+                <div class="col-md-4 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+                    <div class="services-item">
+                        <i class="@item.IconName"></i>
+                        <h3>@item.Title</h3>
+                        <p>@item.Description</p>
+                        <div class="dots"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
-                <div class="services-item">
-                    <i class="icon-tools"></i>
-                    <h3>UX UI Design</h3>
-                    <p>Uniquely incentivize systems for reliable market. Authoritatively scale next generation. </p>
-                    <div class="dots"></div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
-                <div class="services-item">
-                    <i class="icon-search"></i>
-                    <h3>Digital Marketing</h3>
-                    <p>Uniquely incentivize systems for reliable market. Authoritatively scale next generation. </p>
-                    <div class="dots"></div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section><!-- /.services-section -->
@@ -147,60 +113,27 @@
         <div class="portfolio-wrapper">
             <ul class="portfolio-filter text-center mb-30">
                 <li class="active" data-filter="*">All</li>
-                <li data-filter=".branding">Branding</li>
-                <li data-filter=".design">Design</li>
-                <li data-filter=".wordpress">Wordpress</li>
-                <li data-filter=".marketing">Marketing</li>
+                @foreach(var item in Model.Portfolio)
+                {
+                   
+                    <li data-filter=".@item.WorkCategory.Name">@item.WorkCategory.Name</li>
+                    
+                }
+                
             </ul><!-- Portfolio Filter -->
             <div class="row portfolio-items">
-                <div class="col-md-4 col-sm-6 padding-10 single-item design wordpress">
-                    <div class="portfolio-box">
-                        <img src="~/assets/img/port-1.jpg" alt="img">
-                        <div class="portfolio-content">
-                            <h3><a class="img-popup" href="img/port-1.jpg">Design Studio<span>Branding</span></a></h3>
+                @foreach(var item in Model.Portfolio)
+                {
+                    <div class="col-md-4 col-sm-6 padding-10 single-item design wordpress">
+                        <div class="portfolio-box">
+                            <img src="~/Image/WorkImage/@item.WorkImgPath" alt="img">
+                            <div class="portfolio-content">
+                                <h3><a class="img-popup" href="~/Image/WorkImage/@item.WorkImgPath">Design Studio<span>@item.WorkCategory.Name</span></a></h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6 padding-10 single-item branding marketing">
-                    <div class="portfolio-box">
-                        <img src="~/assets/img/port-2.jpg" alt="img">
-                        <div class="portfolio-content">
-                            <h3><a class="img-popup" href="img/port-2.jpg">Design Studio<span>Branding</span></a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 padding-10 single-item design marketing">
-                    <div class="portfolio-box">
-                        <img src="~/assets/img/port-3.jpg" alt="img">
-                        <div class="portfolio-content">
-                            <h3><a class="img-popup" href="img/port-3.jpg">Design Studio<span>Branding</span></a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 padding-10 single-item marketing wordpress">
-                    <div class="portfolio-box">
-                        <img src="~/assets/img/port-4.jpg" alt="img">
-                        <div class="portfolio-content">
-                            <h3><a class="img-popup" href="img/port-4.jpg">Design Studio<span>Branding</span></a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 padding-10 single-item wordpress branding">
-                    <div class="portfolio-box">
-                        <img src="~/assets/img/port-5.jpg" alt="img">
-                        <div class="portfolio-content">
-                            <h3><a class="img-popup" href="img/port-5.jpg">Design Studio<span>Branding</span></a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 padding-10 single-item design">
-                    <div class="portfolio-box">
-                        <img src="~/assets/img/port-6.jpg" alt="img">
-                        <div class="portfolio-content">
-                            <h3><a class="img-popup" href="img/port-6.jpg">Design Studio<span>Branding</span></a></h3>
-                        </div>
-                    </div>
-                </div>
+                }
+
             </div>
         </div>
     </div>
