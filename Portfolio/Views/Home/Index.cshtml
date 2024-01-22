@@ -1,8 +1,288 @@
-﻿@{
+﻿@model HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section id="about" class="about-section section-padding bd-bottom" data-scroll-index="1">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7 sm-padding wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1000ms">
+                <div class="about-content">
+                    <h2>Let Me Introduce Myself.</h2>
+                    <p>@Model.Person.Description</p>
+                    <ul class="profile-info">
+                        <li><span>Full Name</span> @Model.Person.FullName</li>
+                        <li><span>Birth Date</span>@Model.Person.DateofBirth</li>
+                        <li><span>Address</span> @Model.Person.Adress</li>
+                        <li><span>Email</span> @Model.Person.Email</li>
+                        <li><span>Website</span> @Model.Person.Website</li>
+                    </ul>
+                    <a href="#" download="@Model.Person.CVPath" class="default-btn">Download CV <i class="ti-download"></i></a>
+                </div>
+            </div>
+            <div class="col-md-5 sm-padding wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1000ms">
+                <div class="about-bg">
+                    <img src="~/Image/@Model.Person.ImgPath" alt="img">
+                    <div class="dots"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- /.about-section -->
+
+<section id="resume" class="resume-section section-padding bd-bottom" data-scroll-index="2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 sm-padding wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1000ms">
+                <div class="section-heading mb-40">
+                    <h2>Working Experience</h2>
+                </div>
+                <ul class="exp-list">
+                    <li>
+                        <div class="exp-date">
+                            <i class="ti-bookmark"></i>
+                            <span>January 2014 - Till Now</span>
+                        </div>
+                        <div class="exp-content">
+                            <h4>Envato Inc. <span>Software Engineer</span></h4>
+                            <p>I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="exp-date">
+                            <i class="ti-bookmark"></i>
+                            <span>February 2015 - March 2016</span>
+                        </div>
+                        <div class="exp-content">
+                            <h4>Envato Inc. <span>Web Designer</span></h4>
+                            <p>I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 sm-padding wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1000ms">
+                <div class="skill-wrap">
+                    <div class="section-heading mb-40">
+                        <h2>Professional Skills</h2>
+                    </div>
+                    <ul class="skill-items">
+                        <li class="skill-item">
+                            <h5>Photoshop</h5>
+                            <div class="progress">
+                                <div class="progress-bar wow slideInLeft" data-wow-delay="0ms" data-wow-duration="2000ms" role="progressbar" style="width: 80%;">
+                                    <span>80%</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <h5>Indesign</h5>
+                            <div class="progress">
+                                <div class="progress-bar wow slideInLeft" data-wow-delay="200ms" data-wow-duration="2000ms" role="progressbar" style="width: 90%;">
+                                    <span>90%</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <h5>Javascript</h5>
+                            <div class="progress">
+                                <div class="progress-bar wow slideInLeft" data-wow-delay="300ms" data-wow-duration="2000ms" role="progressbar" style="width: 75%;">
+                                    <span>75%</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <h5>Wordpress</h5>
+                            <div class="progress">
+                                <div class="progress-bar wow slideInLeft" data-wow-delay="400ms" data-wow-duration="2000ms" role="progressbar" style="width: 65%;">
+                                    <span>65%</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- /.resume-section -->
+
+<section id="services" class="services-section section-padding bd-bottom" data-scroll-index="3">
+    <div class="container">
+        <div class="section-heading mb-40 text-center wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+            <h2>Outstanding Services</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+                <div class="services-item">
+                    <i class="icon-genius"></i>
+                    <h3>Web Development</h3>
+                    <p>Uniquely incentivize systems for reliable market. Authoritatively scale next generation. </p>
+                    <div class="dots"></div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
+                <div class="services-item">
+                    <i class="icon-tools"></i>
+                    <h3>UX UI Design</h3>
+                    <p>Uniquely incentivize systems for reliable market. Authoritatively scale next generation. </p>
+                    <div class="dots"></div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
+                <div class="services-item">
+                    <i class="icon-search"></i>
+                    <h3>Digital Marketing</h3>
+                    <p>Uniquely incentivize systems for reliable market. Authoritatively scale next generation. </p>
+                    <div class="dots"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- /.services-section -->
+
+<section id="portfolios" class="portfolio-section section-padding bd-bottom" data-scroll-index="4">
+    <div class="container">
+        <div class="section-heading text-center mb-40 wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+            <h2>Work Portfolios</h2>
+        </div>
+        <div class="portfolio-wrapper">
+            <ul class="portfolio-filter text-center mb-30">
+                <li class="active" data-filter="*">All</li>
+                <li data-filter=".branding">Branding</li>
+                <li data-filter=".design">Design</li>
+                <li data-filter=".wordpress">Wordpress</li>
+                <li data-filter=".marketing">Marketing</li>
+            </ul><!-- Portfolio Filter -->
+            <div class="row portfolio-items">
+                <div class="col-md-4 col-sm-6 padding-10 single-item design wordpress">
+                    <div class="portfolio-box">
+                        <img src="~/assets/img/port-1.jpg" alt="img">
+                        <div class="portfolio-content">
+                            <h3><a class="img-popup" href="img/port-1.jpg">Design Studio<span>Branding</span></a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 padding-10 single-item branding marketing">
+                    <div class="portfolio-box">
+                        <img src="~/assets/img/port-2.jpg" alt="img">
+                        <div class="portfolio-content">
+                            <h3><a class="img-popup" href="img/port-2.jpg">Design Studio<span>Branding</span></a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 padding-10 single-item design marketing">
+                    <div class="portfolio-box">
+                        <img src="~/assets/img/port-3.jpg" alt="img">
+                        <div class="portfolio-content">
+                            <h3><a class="img-popup" href="img/port-3.jpg">Design Studio<span>Branding</span></a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 padding-10 single-item marketing wordpress">
+                    <div class="portfolio-box">
+                        <img src="~/assets/img/port-4.jpg" alt="img">
+                        <div class="portfolio-content">
+                            <h3><a class="img-popup" href="img/port-4.jpg">Design Studio<span>Branding</span></a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 padding-10 single-item wordpress branding">
+                    <div class="portfolio-box">
+                        <img src="~/assets/img/port-5.jpg" alt="img">
+                        <div class="portfolio-content">
+                            <h3><a class="img-popup" href="img/port-5.jpg">Design Studio<span>Branding</span></a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 padding-10 single-item design">
+                    <div class="portfolio-box">
+                        <img src="~/assets/img/port-6.jpg" alt="img">
+                        <div class="portfolio-content">
+                            <h3><a class="img-popup" href="img/port-6.jpg">Design Studio<span>Branding</span></a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- /.portfolio-section -->
+
+<section id="reviews" class="testimonial-section section-padding bd-bottom" data-scroll-index="5">
+    <div class="container">
+        <div class="section-heading mb-40 text-center wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+            <h2>Clients Reviews</h2>
+        </div>
+        <div id="testimonial-carousel" class="testimonial-carousel owl-carousel">
+            <div class="testimonial-item">
+                <div class="testimonial-innter">
+                    <div class="testi-thumb"><img src="~/assets/img/testi-1.jpg" alt="img"></div>
+                    <div class="testi-content">
+                        <p>"This has been one of the best Customer Support experiences I have ever had. The design of the theme also, AMAZING! Thank you so much for all your help DynamicLayers!"</p>
+                        <h4>Kyle Frederick <span>Envato.INC</span></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-innter">
+                    <div class="testi-thumb"><img src="~/assets/img/testi-2.jpg" alt="img"></div>
+                    <div class="testi-content">
+                        <p>"This has been one of the best Customer Support experiences I have ever had. The design of the theme also, AMAZING! Thank you so much for all your help DynamicLayers!"</p>
+                        <h4>José Carpio <span>Google.ORG</span></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-innter">
+                    <div class="testi-thumb"><img src="~/assets/img/testi-3.jpg" alt="img"></div>
+                    <div class="testi-content">
+                        <p>"This has been one of the best Customer Support experiences I have ever had. The design of the theme also, AMAZING! Thank you so much for all your help DynamicLayers!"</p>
+                        <h4>Melania Rose <span>Themeforest.CO</span></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- /.testimonial-section -->
+
+<section class="cta-section section-padding bd-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 xs-padding">
+                <div class="cta-content">
+                    <h3>Need a Consultant for Your Business?</h3>
+                </div>
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="#" class="default-btn">Hire Me Now!</a>
+            </div>
+        </div>
+    </div>
+</section><!-- /.cta-section -->
+
+<section id="contact" class="contact-section section-padding" data-scroll-index="6">
+    <div class="container">
+        <div class="section-heading mb-40 text-center wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+            <h2>Get In Touch</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form action="https://html.dynamiclayers.net/dl/naven/light/contact.php" method="post" id="ajax_form" class="row contact-form text-center">
+                    <div class="form-group col-lg-6">
+                        <input type="text" class="form-control" id="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <textarea class="form-control message" id="message" name="message" placeholder="Message" required></textarea>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <button id="submit" class="default-btn" type="submit">Send Message</button>
+                    </div>
+                    <div id="form-messages" class="form-group col-lg-12">
+                        <div class="alert" role="alert"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section><!-- /.contact-section -->

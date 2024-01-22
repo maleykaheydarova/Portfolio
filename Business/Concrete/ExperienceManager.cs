@@ -32,7 +32,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Experience>> GetAll()
         {
-            return new SuccessDataResult<List<Experience>>(_experienceDAL.GetAll().Where(x => x.Deleted == Constants.NotDeleted).ToList());
+            return new SuccessDataResult<List<Experience>>(_experienceDAL.GetPersonWithPosition().Where(x => x.Deleted == Constants.NotDeleted).ToList());
         }
 
         public IDataResult<Experience> GetById(int id)

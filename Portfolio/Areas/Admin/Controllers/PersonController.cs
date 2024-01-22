@@ -9,12 +9,6 @@ namespace Portfolio.Areas.Admin.Controllers
     [Area("Admin")]
     public class PersonController : Controller
     {
-        //    PositionManager _positionManager = new(new PositionEFDal());
-        //    public IActionResult Index()
-        //    {
-        //        var experiences = _positionManager.GetAll();
-        //        return View(experiences);
-        //    }
         private readonly IPersonService _personService;
         private readonly IPositionService _positionService;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -86,9 +80,6 @@ namespace Portfolio.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Edit(Person person)
         {
-            //_personService.Update(person);
-            //return RedirectToAction("Index");
-            //return RedirectToAction("Index");
             var exsistingProfile = _personService.GetById(person.ID).Data;
             string fileName = exsistingProfile.ImgPath;
             if (person.ImageFile == null)

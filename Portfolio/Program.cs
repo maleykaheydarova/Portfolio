@@ -19,6 +19,20 @@ builder.Services.AddScoped<IPositionDAL, PositionEFDal>();
 builder.Services.AddScoped<IPositionService, PositionManager>();
 builder.Services.AddScoped<IPersonDAL, PersonEFDal>();
 builder.Services.AddScoped<IPersonService, PersonManager>();
+builder.Services.AddScoped<IExperienceDAL, ExperienceEFDal>();
+builder.Services.AddScoped<IExperienceService, ExperienceManager>();
+builder.Services.AddScoped<ISkillDAL, SkillEFDal>();
+builder.Services.AddScoped<ISkillService, SkillManager>();
+builder.Services.AddScoped<ISkillDetailsDAL, SkillDetailsEFDal>();
+builder.Services.AddScoped<ISkillDetailsService, SkillDetailsManager>();
+builder.Services.AddScoped<IWorkCategoryDAL, WorkCategoryEFDal>();
+builder.Services.AddScoped<IWorkCategoryService, WorkCategoryManager>();
+builder.Services.AddScoped<IPortfolioDAL, PortfolioEFDal>();
+builder.Services.AddScoped<IPortfolioService, PortfolioManager>();
+builder.Services.AddScoped<IServiceDAL, ServiceEFDal>();
+builder.Services.AddScoped<IServiceService, ServiceManager>();
+
+
 
 var app = builder.Build();
 

@@ -30,7 +30,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Service> Services { get; set; }
         public DbSet<Experience> Experiences { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<Portfolio> Portfolios { get; set; }
+        public DbSet<Portfoli> Portfolios { get; set; }
         public DbSet<Skill> Skills { get; set; }
 
     }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Abstract;
+using Entities.Concrete.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using Portfolio.Models;
 using System.Diagnostics;
 
@@ -6,16 +8,24 @@ namespace Portfolio.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        public readonly IPersonService _personService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IPersonService personService)
         {
-            _logger = logger;
+           _personService= personService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var personData = _personService.GetAll().Data[0];
+
+            HomeViewModel homeViewModel = new()
+            {
+                Person = personData
+            };
+
+
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()

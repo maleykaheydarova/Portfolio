@@ -10,7 +10,7 @@ namespace Entities.Concrete.TableModels
     public class WorkCategory :BaseEntity
     {
         public string Name { get; set; }
-        public List<Portfolio> Portfolios { get; set; }
+        public List<Portfoli> Portfolios { get; set; }
 
     }
 }

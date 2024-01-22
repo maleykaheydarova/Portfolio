@@ -1,0 +1,43 @@
+﻿@model SkillDetails
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Add Skill Details</h3></div>
+                    <div class="card-body">
+                        <form method="post" action="/admin/skilldetails/Add">
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <select asp-for="SkillID" class="p-2 rounded-2 " style="border: 1px solid #d1d3e2; outline:none">
+                                        <option value="">Skill</option>
+                                        @foreach (var item in ViewData["Skills"] as IEnumerable<Skill>)
+                                        {
+                                            <option value="@item.ID">@item.Name</option>
+                                        }
+                                    </select>
+                                    <div class="form-floating mb-3 mt-3 mb-md-3 d-flex align-items-center justify-content-center">
+                                        <input asp-for="Level" type="number" placeholder="skill detail level" class="form-control w-100" id="SkillDetailLevel" placeholder="Enter Skill Details" />
+                                        <label for="SkillLevel" class="w-100">Skill Level</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 mb-0">
+                                <button type="submit" class="btn btn-success">Save</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

@@ -49,9 +49,6 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("EntryDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsContinue")
-                        .HasColumnType("bit");
-
                     b.Property<int>("PositionID")
                         .HasColumnType("int");
 
@@ -162,16 +159,13 @@ namespace DataAccess.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("Entities.Concrete.TableModels.Portfolio", b =>
+            modelBuilder.Entity("Entities.Concrete.TableModels.Portfoli", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
 
                     b.Property<int>("Deleted")
                         .HasColumnType("int");
@@ -184,12 +178,14 @@ namespace DataAccess.Migrations
                     b.Property<int>("WorkCategoryID")
                         .HasColumnType("int");
 
+                    b.Property<string>("WorkImgPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
-                    b.HasIndex("WorkCategoryID");
-
-                    b.HasIndex("CategoryID", "Deleted")
-                        .HasDatabaseName("idx_Portfolio_CategoryID_Deleted");
+                    b.HasIndex("WorkCategoryID", "Deleted")
+                        .HasDatabaseName("idx_Portfolio_WorkCategoryID_Deleted");
 
                     b.ToTable("Portfolios");
                 });
@@ -324,7 +320,9 @@ namespace DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<int>("Deleted")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("Level")
                         .HasColumnType("int");
@@ -334,7 +332,9 @@ namespace DataAccess.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("SkillID");
+                    b.HasIndex("SkillID", "Deleted")
+                        .IsUnique()
+                        .HasDatabaseName("idx_SkillID_Deleted");
 
                     b.ToTable("SkillDetails");
                 });
@@ -557,7 +557,7 @@ namespace DataAccess.Migrations
                     b.Navigation("Position");
                 });
 
-            modelBuilder.Entity("Entities.Concrete.TableModels.Portfolio", b =>
+            modelBuilder.Entity("Entities.Concrete.TableModels.Portfoli", b =>
                 {
                     b.HasOne("Entities.Concrete.TableModels.WorkCategory", "WorkCategory")
                         .WithMany("Portfolios")

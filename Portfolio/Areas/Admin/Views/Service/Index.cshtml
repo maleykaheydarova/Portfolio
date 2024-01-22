@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Service>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+
+    <h1 class="h3 mb-2 text-gray-800 mt-4">Service</h1>
+
+
+    <a href="/admin/Service/Add" class="btn btn-primary">Add</a>
+
+    <!-- DataTaBles Example -->
+    <div class="card shadow mb-4 mt-3 ">
+        <div class="card-body ">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Icon Name</th>
+                            <th>Shown On Page</th>
+                            <th>Description</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {   
+                            <tr>
+                                <td>@item.Title</td>
+                                <td><i class="@item.IconName"></i></td>
+                                <td>@item.ShownOnPage</td>
+                                <td>@item.Description</td>
+                                <td>@Html.ActionLink("Edit", "Edit", "Service", new { id = item.ID }, new { @class = "btn btn-success" })</td>
+                                <td>@Html.ActionLink("Delete", "Delete", "Service", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

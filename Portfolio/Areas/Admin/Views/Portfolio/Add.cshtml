@@ -1,0 +1,50 @@
+﻿@model Portfoli
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Add Portfolio</h3></div>
+                    <div class="card-body">
+                        <form method="post" action="/admin/Portfolio/Add" enctype="multipart/form-data">
+                            <div class="row mb-3">
+                                <div class="col-md-12 w-100">
+                                    <div class="form-floating mb-3 mb-md-3 d-flex align-items-center justify-content-between">
+
+                                        <input asp-for="Title" type="text" class="form-control w-100" placeholder="Enter Title" />
+                                        <label for="Title" class="w-25">Title</label>   
+
+                                    </div>
+                                    <div class="form-floating mb-3 mb-md-3 d-flex align-items-center justify-content-between">
+
+                                        <input asp-for="WorkImageFile" type="file" class="form-control w-100" placeholder="Enter ImgPath" />
+                                        <label for="WorkImageFile" class="w-25">Img Path</label>
+
+                                    </div>
+                                    <select asp-for="WorkCategoryID" class="p-2 rounded-2 " style="border: 1px solid #d1d3e2; outline:none">
+
+                                        <option value="">Work Category</option>
+                                        @foreach (var item in ViewData["WorkCategories"] as IEnumerable<WorkCategory>)
+                                        {
+                                            <option value="@item.ID">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-5 mb-0">
+                                <button type="submit" class="btn btn-success w-100">Save</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

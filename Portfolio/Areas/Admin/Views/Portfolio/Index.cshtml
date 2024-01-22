@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Portfoli>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+
+    <h1 class="h3 mb-2 text-gray-800 mt-4">Portfolio</h1>
+
+
+    <a href="/admin/Portfolio/Add" class="btn btn-primary">Add</a>
+
+
+    @*     <form action="Position/Add" method="get">
+    <button class="btn btn-warning">Add</button>
+    </form> *@
+
+
+    <!-- DataTaBles Example -->
+    <div class="card shadow mb-4 mt-3 ">
+        <div class="card-body ">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Work Img Path</th>
+                            <th>Work Category</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td> <img src="@("~/Image/WorkImage/"+@item.WorkImgPath)" asp-append-version="true" width="100px" height="100px" /></td>
+                                <td>@item.WorkCategory.Name</td>
+                                <td>@Html.ActionLink("Edit", "Edit", "Portfolio", new { id = item.ID }, new { @class = "btn btn-success" })</td>
+                                <td>@Html.ActionLink("Delete", "Delete", "Portfolio", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

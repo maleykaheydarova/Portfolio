@@ -14,7 +14,7 @@ namespace Entities.Concrete.TableModels
         public string Description { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public bool IsContinue { get; set; }
+        public bool IsContinue => EndDate == null;
         public Position Position { get; set; }
 
     }

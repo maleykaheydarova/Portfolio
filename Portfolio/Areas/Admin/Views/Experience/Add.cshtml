@@ -1,0 +1,68 @@
+﻿@model Experience
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@* <h2>Add Person</h2> *@
+
+
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Add Experience</h3></div>
+                    <div class="card-body">
+                        <form method="post" action="/admin/Experience/Add" enctype="multipart/form-data">
+                            <div class="row mb-3">
+                                <div class="col-md-12 w-100">
+                                    <div class="form-floating mb-3 mb-md-3 d-flex align-items-center justify-content-between">
+                                        @*         <span>First Name</span> *@
+
+                                        <input asp-for="CompanyName" type="text" class="form-control w-100" id="CompanyName" placeholder="Enter CompanyName" />
+                                        <label for="CompanyName" class="w-25">Company Name</label>
+
+                                    </div>
+                                    <div class="form-floating mb-3 mb-md-3 d-flex align-items-center justify-content-between">
+                                        @* <span>Date of Birth</span> *@
+
+                                        <input asp-for="EntryDate" type="date" class="form-control w-100" id="EntryDate" placeholder="Enter EntryDate" />
+                                        <label for="EntryDate" class="w-25">Entry Date</label>
+
+                                    </div>
+                                    <div class="form-floating mb-3 mb-md-3 d-flex align-items-center justify-content-between">
+                                        @* <span>Date of Birth</span> *@
+
+                                        <input asp-for="EndDate" type="date" class="form-control w-100" id="EndDate" placeholder="Enter EndDate" />
+                                        <label for="EndDate" class="w-25">End Date</label>
+
+                                    </div>
+                                    <select asp-for="PositionID" class="p-2 rounded-2 " style="border: 1px solid #d1d3e2; outline:none">
+                                        <option value="">Position</option>
+                                        @foreach (var item in ViewData["Positions"] as IEnumerable<Position>)
+                                        {
+                                            <option value="@item.ID">@item.Name</option>
+                                        }
+                                    </select>
+                                    <div class="form-floating mt-5 mb-md-3 d-flex align-items-center justify-content-between">
+                                        @*    <span>Description</span> *@
+                                        <input asp-for="Description" type="text" class="form-control w-100" id="Description" placeholder="Enter Description" />
+                                        <label for="Description" class="w-25">Description</label>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="mt-5 mb-0">
+                                <button type="submit" class="btn btn-success w-100">Save</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

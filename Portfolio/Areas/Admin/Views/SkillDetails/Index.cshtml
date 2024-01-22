@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SkillDetails>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800 mt-4">Skill Details</h1>
+
+
+    <a href="/admin/skilldetails/Add" class="btn btn-primary">Add</a>
+
+
+    <!-- DataTaBles Example -->
+    <div class="card shadow mb-4 mt-3">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Skill Name</th>
+                            <th>Level</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Skill.Name</td>
+                                <td>@item.Level</td>
+                                <td>@Html.ActionLink("Edit", "Edit", "SkillDetails", new { id = item.ID }, new { @class = "btn btn-success" })</td>
+                                <td>@Html.ActionLink("Delete", "Delete", "SkillDetails", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

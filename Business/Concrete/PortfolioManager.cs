@@ -21,31 +21,32 @@ namespace Business.Concrete
         {
             _portfolioDAL = portfolioDAL;
         }
-        public IResult Add(Portfolio portfolio)
+        public IResult Add(Portfoli portfolio, string fileName)
         {
-
+            portfolio.WorkImgPath = fileName;
             _portfolioDAL.Add(portfolio);
             return new SuccessResult(OperationMessage.DataAddedSuccesfly);
         }
 
-        public IResult Delete(Portfolio portfolio)
+        public IResult Delete(Portfoli portfolio)
         {
             _portfolioDAL.Update(portfolio);
             return new SuccessResult(OperationMessage.DataDeletedSuccesfly);
         }
 
-        public IDataResult<List<Portfolio>> GetAll()
+        public IDataResult<List<Portfoli>> GetAll()
         {
-            return new SuccessDataResult<List<Portfolio>>(_portfolioDAL.GetAll().Where(x => x.Deleted == Constants.NotDeleted).ToList());
+            return new SuccessDataResult<List<Portfoli>>(_portfolioDAL.GetPortfolioWithWorkCategory().Where(x => x.Deleted == Constants.NotDeleted).ToList());
         }
 
-        public IDataResult<Portfolio> GetById(int id)
+        public IDataResult<Portfoli> GetById(int id)
         {
-            return new SuccessDataResult<Portfolio>(_portfolioDAL.Get(x => x.Deleted == Constants.NotDeleted && x.ID == id));
+            return new SuccessDataResult<Portfoli>(_portfolioDAL.Get(x => x.Deleted == Constants.NotDeleted && x.ID == id));
         }
 
-        public IResult Update(Portfolio portfolio)
+        public IResult Update(Portfoli portfolio, string fileName)
         {
+            portfolio.WorkImgPath = fileName;
             _portfolioDAL.Update(portfolio);
             return new SuccessResult(OperationMessage.DataUpdateSuccesfly);
         }
